@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
-function App() {
+function App({ signOut, user }) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        {/* Тук ще добавим основната логика на приложението */}
+        {/*<h2>Добре дошли в приложението за уговаряне на срещи!</h2>*/}
+
+        <Button onClick={signOut} style={{marginTop: '20px'}}>Изход</Button>*
       </header>
     </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App, {
+  loginMechanisms: ['email'],
+  signUpAttributes: ['name'],
+});
