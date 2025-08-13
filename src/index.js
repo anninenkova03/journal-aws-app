@@ -7,8 +7,8 @@ Amplify.configure({
   Auth: { 
     Cognito: {
     region: 'us-east-1',
-    userPoolId: 'us-east-1_C2OZHp0kB',
-    userPoolClientId: 'g0i8mghqbvlgmi13t5p5d2s1b',
+    userPoolId: 'us-east-1_DeXYhj08z',
+    userPoolClientId: '53n4r1l0qci7hkvdkh84penpkg',
     authenticationFlowType: 'USER_PASSWORD_AUTH', 
     aws_cognito_identity_pool_id: undefined,
   }
@@ -18,11 +18,13 @@ Amplify.configure({
       {
         name: "JournalApi", 
         endpoint: "https://abpg4l3obe.execute-api.us-east-1.amazonaws.com/v1",
-        region: 'us-east-1'
+        region: 'us-east-1',
+        custom_header: async () => { 
+          return { Authorization: `Bearer ${(await Amplify.Auth.currentSession()).getIdToken().getJwtToken()}` }
+        },
       }
     ]
-  }
-});
+}});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
