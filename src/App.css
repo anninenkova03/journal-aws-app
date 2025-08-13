@@ -1,3 +1,4 @@
+/* Base App Styles */
 .App {
   display: flex;
   flex-direction: column;
@@ -7,12 +8,13 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* Header */
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #e0e0e0;
 }
@@ -27,6 +29,7 @@
   gap: 1rem;
 }
 
+/* Main Layout */
 .app-main {
   flex-grow: 1;
   display: flex;
@@ -44,21 +47,30 @@
   }
 }
 
-.form-container {
-  width: 100%;
-  max-width: 400px;
+/* Card-like Containers */
+.card-style {
   background: #fff;
-  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form-container h3 {
-  margin-top: 0;
-  text-align: center;
-  color: #333;
+/* Form Container */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.form-container h3,
+.entries-container h3 {
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+/* Form Inputs */
 .form-input,
 .form-textarea {
   width: 100%;
@@ -75,15 +87,10 @@
   resize: vertical;
 }
 
+/* Entries Container */
 .entries-container {
   width: 100%;
   max-width: 600px;
-}
-
-.entries-container h3 {
-  margin-top: 0;
-  text-align: center;
-  color: #333;
 }
 
 .entries-list {
@@ -92,17 +99,20 @@
   gap: 1.5rem;
 }
 
-.error-message {
-  color: #d9534f;
+.no-entries-message {
   text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 2rem;
 }
 
+/* Journal Entry Card */
 .journal-entry-card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   padding: 1.5rem;
   transition: transform 0.2s ease-in-out;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px #0000001a;
 }
 
 .journal-entry-card:hover {
@@ -130,7 +140,7 @@
 }
 
 .card-content {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
   line-height: 1.6;
   white-space: pre-wrap;
 }
@@ -139,6 +149,7 @@
   text-align: right;
 }
 
+/* Date Navigation */
 .date-navigation {
   display: flex;
   justify-content: space-between;
@@ -151,7 +162,6 @@
 
 .date-navigation .current-date {
   margin: 0;
-  color: #333;
   font-size: 1.2rem;
 }
 
