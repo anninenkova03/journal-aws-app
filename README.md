@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Уеб Дневник (Journal)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Този проект представлява сървърлес уеб приложение за дигитален дневник, което позволява на потребителите да създават, редактират, изтриват и преглеждат своите дневникови записи. Приложението е изградено изцяло върху облачната платформа **Amazon Web Services (AWS)**, което гарантира висока мащабируемост, надеждност и оптимизация на разходите.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### Функционалности
 
-### `npm start`
+* **Сигурна регистрация и вход**: Потребителите могат да създават и потвърждават акаунти чрез имейл.
+* **Управление на записи**: Потребителите могат да създават нови записи със заглавие и съдържание.
+* **Преглед на записи**: Потребителите имат достъп до списък с всичките си предишни записи, сортирани по дата.
+* **Редактиране и изтриване**: Възможност за промяна или премахване на съществуващи записи.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Архитектура
 
-### `npm test`
+Приложението е базирано на ключови сървърлес услуги от AWS:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Amazon S3 (Simple Storage Service)**: Хоства статичните файлове на React фронтенд приложението.
+* **Amazon Cognito**: Управлява потребителската автентикация, регистрация и сесии.
+* **Amazon API Gateway**: Служи като входна точка за всички RESTful API заявки, пренасочвайки ги към AWS Lambda.
+* **AWS Lambda**: Изпълнява бекенд логиката на приложението (Node.js) без необходимост от управление на сървъри.
+* **Amazon DynamoDB**: Бърза и гъвкава NoSQL база данни, използвана за съхранение на дневниковите записи и потребителските данни.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Инсталация и настройки
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+За да настроите проекта, трябва да конфигурирате следните AWS услуги:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.  **Конфигуриране на DynamoDB**: Създайте таблица `JournalEntries` с `userId` (Partition Key) и `entryId` (Sort Key). Добавете и Global Secondary Index (`userId-createdAt-index`) за ефективно сортиране на записите по дата.
+2.  **Конфигуриране на Cognito**: Създайте потребителски пул (User pool) и клиент (App client) за управление на потребителската автентикация.
+3.  **Създаване на Lambda функции**: Разработете четири функции (`getEntries`, `createEntry`, `editEntry`, `deleteEntry`), всяка от които отговаря за една от основните CRUD операции.
+4.  **Конфигуриране на API Gateway**: Създайте REST API, интегрирайте Cognito авторизатора за сигурност и свържете методите (GET, POST, PUT, DELETE) с правилните Lambda функции.
+5.  **Конфигуриране на S3 Bucket**: Създайте S3 bucket за статичен уеб хостинг и качете фронтенд файловете на React приложението.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Бъдещи Подобрения
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Разширяване на функционалността за **създаване на записи за минали дни**.
+* Добавяне на **търсене по ключови думи и филтриране**.
+* Възможност за **експорт и импорт на данни** (PDF/CSV).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Източници
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* [Amazon S3 Documentation](https://aws.amazon.com/s3/)
+* [Amazon Cognito Documentation](https://aws.amazon.com/cognito/)
+* [Amazon API Gateway Documentation](https://aws.amazon.com/api-gateway/)
+* [AWS Lambda Documentation](https://aws.amazon.com/lambda/)
+* [Amazon DynamoDB Documentation](https://aws.amazon.com/dynamodb/)

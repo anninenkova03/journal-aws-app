@@ -1,0 +1,14 @@
+{
+    "httpMethod": "PUT",
+    "pathParameters": {
+      "entryId": "2d1313f4-47d2-438e-a252-6133dee35644"
+    },
+    "body": "{\"title\": \"Updated title\", \"content\": \"Updated content\"}",
+    "requestContext": {
+      "authorizer": {
+        "claims": {
+          "sub": "12345678-abcd-efgh-ijkl-1234567890ab"
+        }
+      }
+    }
+  }

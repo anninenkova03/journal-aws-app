@@ -1,0 +1,11 @@
+{
+    "body": "{\"title\":\"My First Entry\",\"content\":\"This is a test entry.\"}",
+    "requestContext": {
+      "authorizer": {
+        "claims": {
+          "sub": "12345678-abcd-efgh-ijkl-1234567890ab"
+        }
+      }
+    }
+  }
+  
