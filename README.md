@@ -52,3 +52,9 @@
 * [Amazon API Gateway Documentation](https://aws.amazon.com/api-gateway/)
 * [AWS Lambda Documentation](https://aws.amazon.com/lambda/)
 * [Amazon DynamoDB Documentation](https://aws.amazon.com/dynamodb/)
+
+---
+
+### Забележка !!! 
+
+Подробна документация и демо видео можете да намерите в папката documentation.

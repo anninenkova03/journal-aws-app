@@ -150,16 +150,16 @@ function App({ signOut, user }) {
   };
 
   const handlePreviousDay = () => {
-    setSelectedDate(prevDate => {
-      const newDate = new Date(prevDate);
+    setSelectedDate(oldDate => {
+      const newDate = new Date(oldDate);
       newDate.setDate(newDate.getDate() - 1);
       return newDate;
     });
   };
   
   const handleNextDay = () => {
-    setSelectedDate(prevDate => {
-      const newDate = new Date(prevDate);
+    setSelectedDate(oldDate => {
+      const newDate = new Date(oldDate);
       newDate.setDate(newDate.getDate() + 1);
       return newDate;
     });
